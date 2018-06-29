@@ -1,7 +1,7 @@
 # qs-mashup-openapp
 Simple mashup to open an app from Qlik Sense server by its name rather than its id (browser redirects you)
 
-![alt text](https://github.com/ChristofSchwarz/pics/raw/master/demo-qs-mashup-openapp.gif "Screenrec")
+![alt text](https://github.com/ChristofSchwarz/pics/raw/master/demo-open-app-mashup.gif "Screenrec")
 
 This serves the purpose when you know a title (name) of an app, or even the sheet-id of an app, but not the app id itself (for example the a new server has been installed, app id has changed, but you want a permanent link to work before as well as after)
 
@@ -9,7 +9,7 @@ This serves the purpose when you know a title (name) of an app, or even the shee
 * the text provided must be equal to, or a substring of, the app title.
 * If only one app is returned, the browser redirects to that app (if not using option <b>&wait</b>). 
 * In case the provided app name is not unique (for that user), all available apps will be shown in a list 
-![alt text](https://github.com/ChristofSchwarz/pics/raw/master/qs-mashup-openapp.png "screenshot")
+![alt text](https://github.com/ChristofSchwarz/pics/raw/master/2018-06-29%2015_18_20-Qlik%20Sense%20Mashup.png "screenshot")
 * If no app with given title is found then this error is shown
 ![alt text](https://github.com/ChristofSchwarz/pics/raw/master/qs-mashup-openapp-err.png "screenshot")
 * More options are availale 
