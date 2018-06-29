@@ -3,7 +3,7 @@ Simple mashup to open an app from Qlik Sense server by its name rather than its 
 
 ![alt text](https://github.com/ChristofSchwarz/pics/raw/master/demo-open-app-mashup.gif "Screenrec")
 
-This serves the purpose when you know a title (name) of an app, or even the sheet-id of an app, but not the app id itself (for example the a new server has been installed, app id has changed, but you want a permanent link to work before as well as after)
+This serves the purpose when you know a title (name) of an app but not the app id itself (for example the a new server has been installed, app id has changed, but you want a permanent link to work before as well as after)
 
 * The mashup uses the QRS API /qrs/app to query available apps with the rights of the user. (this means different users may be redirected to different apps if the title is not unique)
 * the text provided must be equal to, or a substring of, the app title.
