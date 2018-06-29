@@ -31,6 +31,7 @@ var qrsUrl = (config.isSecure ? "https://" : "http://") + config.host + (config.
 + (personal ? '%20and%20published%20eq%20false' : '')
 + '&xrfkey=' + xrfkey
 
+// Filtering settings: https://help.qlik.com/en-US/sense-developer/June2018/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Filtering.htm
 
 
 function redirUrl(id, moreParams) {
