@@ -13,6 +13,8 @@ var queryStrings = decodeURIComponent(window.location.search.substring(1)).split
 var appname = queryStrings[0];
 var wait = queryStrings.indexOf('wait') > -1;
 var silent = queryStrings.indexOf('silent') > -1;
+var published = queryStrings.indexOf('published') > -1;
+var personal = (queryStrings.indexOf('personal') > -1) || (queryStrings.indexOf('private') > -1);
 var moreParams;
 var i = 0;
 do {
@@ -21,10 +23,14 @@ do {
 	i++;
 } while (i < queryStrings.length && !moreParams);
 //console.log('moreParams:', moreParams);
-
-var qrsUrl = (config.isSecure ? "https://" : "http://") + config.host + (config.port ? ":" + config.port : "") 
-+ config.prefix + 'qrs/app/full';
 var xrfkey = 'abcdefghijklmnop';
+var qrsUrl = (config.isSecure ? "https://" : "http://") + config.host + (config.port ? ":" + config.port : "") 
++ config.prefix + 'qrs/app/full'
++ "?filter=name%20so%20'" + appname + "'"
++ (published ? '%20and%20published%20eq%20true' : '')
++ (personal ? '%20and%20published%20eq%20false' : '')
++ '&xrfkey=' + xrfkey
+
 
 
 function redirUrl(id, moreParams) {
@@ -39,13 +45,13 @@ if (!silent || wait) {
 }
 
 if (appname) {
-	//console.log('qrsUrl:', qrsUrl);
+	console.log('qrsUrl:', qrsUrl);
 	//console.log('appname:', appname);
 	document.getElementById('appName').innerText = appname; 
 
 	var httpRequest = new XMLHttpRequest();
 	
-	httpRequest.open("GET", qrsUrl + "?filter=name%20so%20'" + appname + "'&xrfkey=" + xrfkey, true);
+	httpRequest.open("GET", qrsUrl, true);
 	httpRequest.setRequestHeader("x-Qlik-Xrfkey", xrfkey);
 	httpRequest.send();
 
@@ -61,17 +67,19 @@ if (appname) {
 			
 				document.getElementsByTagName("body")[0].style = '';			
 				document.getElementById('extError').innerText = 'No such app found. Try a different app name.'; 					
-					
+				
 			} else {
 				var table = document.getElementById('qrsAnswer').appendChild(document.createElement('table'));
 				var tr = table.appendChild(document.createElement('tr'));
 				tr.appendChild(document.createElement('th')).innerHTML = 'App Id';
 				tr.appendChild(document.createElement('th')).innerText = 'App Name';
+				tr.appendChild(document.createElement('th')).innerText = 'Stream';
 
 				qrsResponse.forEach(function (arrItem) {
 					var tr = table.appendChild(document.createElement('tr'));
 					tr.appendChild(document.createElement('td')).innerHTML = '<a href="' + redirUrl(arrItem.id, moreParams) + '">' + arrItem.id + '</a>';
 					tr.appendChild(document.createElement('td')).innerHTML = '<a href="' + redirUrl(arrItem.id, moreParams) + '">' + arrItem.name + '</a>';
+					tr.appendChild(document.createElement('td')).innerText = (arrItem.published ? arrItem.stream.name : '');
 				});
 
 				if (qrsResponse.length == 1) {
