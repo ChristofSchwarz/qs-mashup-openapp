@@ -1,22 +1,25 @@
 # qs-mashup-openapp
 Simple mashup to open an app from Qlik Sense server by its name rather than its id (browser redirects you)
 
+![alt text](https://github.com/ChristofSchwarz/pics/raw/master/demo-qs-mashup-openapp.gif "Screenrec")
+
 This serves the purpose when you know a title (name) of an app, or even the sheet-id of an app, but not the app id itself (for example the a new server has been installed, app id has changed, but you want a permanent link to work before as well as after)
 
 * The mashup uses the QRS API /qrs/app to query available apps with the rights of the user. (this means different users may be redirected to different apps if the title is not unique)
 * the text provided must be equal to, or a substring of, the app title.
 * If only one app is returned, the browser redirects to that app (if not using option &wait). 
 * In case the provided app name is not unique (for that user), all available apps will be shown in a list 
+![alt text](https://github.com/ChristofSchwarz/pics/raw/master/qs-mashup-openapp.png "screenshot")
+* If no app with given title is found then this error is shown
+![alt text](https://github.com/ChristofSchwarz/pics/raw/master/qs-mashup-openapp-err.png "screenshot")
 * More options are availale 
     * &silent supresses any screen output (html body set to display:none) while redirecting
     * option starting with '&/' (like &/sheet/sheetid/state/analysis) will be added to the redirect url (without "&"), so you can even pass a deep link to the target app
 
+
+
 ## When option get overruled
 * &silent ... when no app can be found, an error is shown. 
-
-In case that the title is not unique a list of available apps will be shown
-
-![alt text](https://github.com/ChristofSchwarz/qs-mashup-openapp/raw/master/demo.gif "Screenrec")
 
 ## Syntax:
 http(s)://&lt;serverurl&gt;/extensions/open/app.html?&lt;appname&gt;[&wait][&ilent][&/more/rest/params]
