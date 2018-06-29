@@ -14,12 +14,16 @@ This serves the purpose when you know a title (name) of an app, or even the shee
 ![alt text](https://github.com/ChristofSchwarz/pics/raw/master/qs-mashup-openapp-err.png "screenshot")
 * More options are availale 
     * <b>&silent</b> supresses any screen output (html body set to display:none) while redirecting
+    * <b>&published</b> searches only within Apps published in Streams (this can help to make an App name unique)
+    * <b>&private</b> or <b>&personal</b> searches only in unpublished Apps (Personal Work)
     * option starting with '&/' (like &/sheet/sheetid/state/analysis) will be added to the redirect url (without "&"), so you can even pass a deep link to the target app
 
 
 
 ## When options get overruled
 * <b>&silent</b> ... when no app can be found, an error is shown regardless of adding &silent (no redirect)
+* <b>&silent&wait</b> ... both options lead to ignore &silent (waiting on an empty screen makes no sense)
+* <b>&published&private</b> ... both options in combination lead to no app being shown
 
 ## Syntax:
 http(s)://&lt;serverurl&gt;/extensions/open/app.html?&lt;appname&gt;[&wait][&silent][&/more/rest/params]
