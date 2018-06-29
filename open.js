@@ -58,7 +58,10 @@ if (appname) {
 			document.getElementById('totalCount').innerText = 'Total: ' + qrsResponse.length;
 			
 			if (qrsResponse.length == 0) {
+			
+				document.getElementsByTagName("body")[0].style = '';			
 				document.getElementById('extError').innerText = 'No such app found. Try a different app name.'; 					
+					
 			} else {
 				var table = document.getElementById('qrsAnswer').appendChild(document.createElement('table'));
 				var tr = table.appendChild(document.createElement('tr'));
