@@ -18,8 +18,8 @@ This serves the purpose when you know a title (name) of an app, or even the shee
 
 
 
-## When option get overruled
-* <b>&silent</b> ... when no app can be found, an error is shown. 
+## When options get overruled
+* <b>&silent</b> ... when no app can be found, an error is shown regardless of adding &silent (no redirect)
 
 ## Syntax:
 http(s)://&lt;serverurl&gt;/extensions/open/app.html?&lt;appname&gt;[&wait][&silent][&/more/rest/params]
