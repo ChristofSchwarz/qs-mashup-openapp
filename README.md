@@ -9,7 +9,7 @@ This serves the purpose when you know a title (name) of an app but not the app i
 * the text provided must be equal to, or a substring of, the app title.
 * If only one app is returned, the browser redirects to that app (if not using option <b>&wait</b>). 
 * In case the provided app name is not unique (for that user), all available apps will be shown in a list 
-![alt text](https://github.com/ChristofSchwarz/pics/raw/master/2018-06-29%2015_18_20-Qlik%20Sense%20Mashup.png "screenshot")
+![](https://github.com/ChristofSchwarz/pics/raw/master/2018-06-29%2015_18_20-Qlik%20Sense%20Mashup.png "screenshot")
 * If no app with given title is found then this error is shown
 ![alt text](https://github.com/ChristofSchwarz/pics/raw/master/qs-mashup-openapp-err.png "screenshot")
 
